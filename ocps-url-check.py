@@ -1,9 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 import os
+from datetime import datetime
 
-def send_notification(title, message):
-   os.system(f'osascript -e \'display notification "{message}" with title "{title}"\'')
+def send_notification(title, message, url=None):
+    now = datetime.now().strftime("%A %I:%M %p")
+    os.system(f'osascript -e \'display notification "{message}" with title "{title} ({now})" with sticky\'')
 
 # URL of the webpage to scrape
 url = "https://www.ocps.net/departments/student_enrollment/transfers"
